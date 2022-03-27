@@ -44,7 +44,7 @@ DISTRO=$(what_distro)
 ensure_git() {
     if ! which git ; then
         if [[ $DISTRO = 'ubuntu' || $DISTRO = 'debian' ]] ; then
-            sudo apt-get install git
+            sudo apt-get install git -y
         elif [[ $DISTRO = 'fedora' ]] ; then
             sudo yum install git
         fi
@@ -73,7 +73,7 @@ compile_loic() {
         exit 1
     fi
     if [[ $DISTRO = 'ubuntu' || $DISTRO = 'debian' ]] ; then
-        sudo apt-get install $DEB_MONO_PKG
+        sudo apt-get install $DEB_MONO_PKG -y
     elif [[ $DISTRO = 'fedora' ]] ; then
         sudo yum install $FED_MONO_PKG
     fi
@@ -87,7 +87,7 @@ run_loic() {
     fi
     if ! which mono ; then
         if [[ $DISTRO = 'ubuntu' || $DISTRO = 'debian' ]] ; then
-            sudo apt-get install mono-runtime
+            sudo apt-get install mono-runtime -y
         elif [[ $DISTRO = 'fedora' ]] ; then
             sudo yum install mono-runtime
         fi
